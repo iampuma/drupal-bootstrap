@@ -1,0 +1,17 @@
+## Drupal Bootstrap
+
+Easily download and run the latest Drupal locally through the help of make commands
+
+# Requirements
+
+- Unix and Unix-like environment
+- PHP >= 7.3
+- Composer
+
+# How to use it
+
+Run `make` or `make help`
+
+# Quick start
+
+`make up`
