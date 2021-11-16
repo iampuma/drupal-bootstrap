@@ -6,7 +6,7 @@ Easily download and run the latest Drupal locally through the help of make comma
 
 - Unix or Unix-like environment
 - PHP >= 7.3
-- Composer
+- Composer 2
 
 # How to use it
 

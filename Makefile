@@ -17,23 +17,19 @@ init: ## Download and install latest Drupal and composer requirements
 	php -d memory_limit=-1 /usr/local/bin/composer create-project drupal-composer/drupal-project:9.x-dev drupal --no-interaction
 	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require drush/drush
 
-install: ## Install 'Custom demo' profile instance and start
+install: ## Install 'Custom demo' profile instance
 	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal install standard --site-name="Demo"
 	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require drupal/admin_toolbar
 	cd drupal && ./vendor/bin/drush en -y admin_toolbar admin_toolbar_tools admin_toolbar_links_access_filter
-	make start
 
-install-minimal: ## Install 'Minimal' profile instance and start
-	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal quick-start minimal
-	make start
+install-minimal: ## Install 'Minimal' profile instance
+	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal install minimal
 
-install-standard: ## Install 'Standard' profile instance and start
-	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal quick-start standard
-	make start
+install-standard: ## Install 'Standard' profile instance
+	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal install standard
 
-install-umami: ## Install 'Umami Demo' profile instance and start
-	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal quick-start demo_umami
-	make start
+install-umami: ## Install 'Umami Demo' profile instance
+	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal install demo_umami
 
 start: ## Run local webserver and serve current Drupal instance
 	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal server
