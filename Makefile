@@ -32,7 +32,8 @@ install-umami: ## Install 'Umami Demo' profile instance
 	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal install demo_umami
 
 start: ## Run local webserver and serve current Drupal instance
-	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal server
+	cd drupal && ./vendor/bin/drush uli
+	cd drupal/web && php -d memory_limit=-1 -S localhost:8888 .ht.router.php
 
 down: ## Remove the current project (codebase+db!)
 	sudo rm -rf drupal
