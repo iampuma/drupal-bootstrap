@@ -32,6 +32,7 @@ build: ## Download and install latest Drupal and composer requirements + configu
 	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require phpspec/prophecy-phpunit:^2 --dev
 	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require drupal/console:~1.0 --dev --prefer-dist --optimize-autoloader
 	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require drupal/drupal-extension --dev
+	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require phpmd/phpmd --dev
 	make configure-phpunit
 	make configure-behat
 
