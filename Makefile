@@ -81,6 +81,7 @@ module-install: ## Download and enable a <module> `make module-install admin_too
 	make module-enable ${ARG_1}
 
 module-source: ## Download and install a <module> from source `make module-source styled_google_map`
+	cd drupal/web && rm -rf modules/contrib/${ARG_1}
 	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require drupal/${ARG_1} --prefer-source
 	make module-install ${ARG_1}
 	make phpcs ${ARG_1}
