@@ -5,8 +5,8 @@ Easily download and run the latest Drupal locally through the help of make comma
 # Requirements
 
 - Unix or Unix-like environment
-- PHP >= 7.3
-- Composer 2
+- PHP >= 8.3
+- Composer >= 2.7
 
 # How to use it
 
@@ -14,4 +14,4 @@ Run `make` or `make help`
 
 # Quick start
 
-`make up`
+`make init`
