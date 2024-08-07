@@ -14,7 +14,7 @@ init: ## Initialize, install and serve the Drupal instance
 	make start
 
 start: ## Run local webserver and serve current Drupal instance
-	cd drupal && ./vendor/bin/drush uli
+	cd drupal && ./vendor/bin/drush uli --uri localhost:8888
 	cd drupal/web && php -d memory_limit=-1 -S localhost:8888 .ht.router.php
 
 down: ## Remove the current project (codebase+db!)
@@ -29,11 +29,13 @@ be-build: ## Download and install latest Drupal and composer requirements
 	php -d memory_limit=-1 /usr/local/bin/composer create-project drupal-composer/drupal-project:11.x-dev drupal --no-interaction
 	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require drush/drush
 	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require drupal/gin
+	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require drupal/gin_toolbar
 
 be-install: ## Install 'Custom demo' profile instance
 	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal install standard --site-name="Demo"	
 	cd drupal && ./vendor/bin/drush theme:install -y gin
-	cd drupal && ./vendor/bin/drush en -y navigation
+	cd drupal && ./vendor/bin/drush config-set system.theme admin gin -y
+	cd drupal && ./vendor/bin/drush en -y navigation gin_toolbar
 
 be-install-minimal: ## Install 'Minimal' profile instance
 	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal install minimal
