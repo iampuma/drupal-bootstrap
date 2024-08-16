@@ -28,8 +28,8 @@ clean: ## Cleanup the current project for a fresh install (db+settings.php, keep
 be-build: ## Download and install latest Drupal and composer requirements
 	php -d memory_limit=-1 /usr/local/bin/composer create-project drupal-composer/drupal-project:11.x-dev drupal --no-interaction
 	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require drush/drush
-	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require drupal/gin
-	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require drupal/gin_toolbar
+	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require 'drupal/gin_toolbar:1.x-dev@dev'
+	cd drupal && php -d memory_limit=-1 /usr/local/bin/composer require 'drupal/gin:3.x-dev@dev'
 
 be-install: ## Install 'Custom demo' profile instance
 	cd drupal/web && php -d memory_limit=-1 ./core/scripts/drupal install standard --site-name="Demo"	
